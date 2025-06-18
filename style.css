@@ -82,3 +82,9 @@ body{
 {
     transform: scale(1.05);
 }
+
+.card.dragable {
+    opacity: 0.5;
+    border: 2px dashed #007bff;
+    cursor: grabbing;
+}
