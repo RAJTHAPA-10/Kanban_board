@@ -1,0 +1,68 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #222831;
+}
+
+.board
+{
+    display: flex;
+    gap: 20px;
+}
+
+.column
+{
+    background-color: #393e46;
+    padding: 10px;
+    width: 400px;
+    min-height: 400px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.column h2
+{
+    text-align: center;
+    color: #fff;
+}
+
+.tasks
+{
+    min-height: 500px;
+}
+
+.task-input
+{
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 16px;
+}
+
+.add-task
+{
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 4px;
+    border: none;
+    background-color: #d89216;
+    margin-top: 10px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.add-task:hover{
+    background-color: #94630e;
+}
