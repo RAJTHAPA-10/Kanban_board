@@ -1,4 +1,5 @@
 let draggedelement=null;
+let rightclickedcard=null;
 function addtask(columnid)
 {
     const input = document.getElementById(`${columnid}-input`);
@@ -19,8 +20,13 @@ function getcosmadecard(inputvalue)
     inputcard.innerText=inputvalue;
     inputcard.classList.add("card");
     inputcard.draggable=true;
-    inputcard.addEventListener("dragstart",funstart)
-    inputcard.addEventListener("dragend",funend)
+    inputcard.addEventListener("dragstart",funstart);
+    inputcard.addEventListener("dragend",funend);
+    inputcard.addEventListener("contextmenu",function(event){
+         event.preventDefault();
+         rightclickedcard=this;
+         showContextMenu(event.pageX,event.pageY);
+    });
     return inputcard;
 
 }
@@ -47,4 +53,37 @@ function funover(event)
     event.preventDefault();
     this.appendChild(draggedelement);
     
+}
+
+const contextmenu = document.querySelector(".context-menu");
+function showContextMenu(x,y)
+{
+    contextmenu.style.left=`${x}px`;
+    contextmenu.style.top=`${y}px`;
+    contextmenu.style.display="block";
+}
+
+document.addEventListener("click",()=>
+{
+    contextmenu.style.display="none";
+});
+
+function edittask()
+{
+    if(rightclickedcard!==null)
+    {
+        const newtext=prompt("edit Message-",rightclickedcard.innerText);
+        if(newtext!="")
+        {
+            rightclickedcard.innerText=newtext;
+        }
+    }
+}
+
+function deletetask()
+{
+    if(rightclickedcard!==null)
+    {
+        rightclickedcard.remove();
+    }
 }
