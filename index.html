@@ -9,20 +9,20 @@
 <body>
     <div class="board" >
         <div class="column" id="todo">
-            <h2>TO-DO</h2>
+            <h2>TO-DO(<span id="todo-count">0</span>)</h2>
             <div class="tasks" id="todo-tasks"></div>
             <input type="text" class="task-input" placeholder="add task" id ="todo-input" >
             <button 
              class="add-task" onclick="addtask('todo')">ADD TASK</button>
         </div>
         <div class="column" id="doing">
-            <h2>DOING</h2>
+            <h2>DOING(<span id="doing-count">0</span>)</h2>
             <div class="tasks" id="doing-tasks"></div>
             <input type="text" class="task-input" id ="doing-input" placeholder="add task">
             <button  class="add-task" onclick="addtask('doing')" >ADD TASK</button>
         </div>
         <div class="column" id="done">
-            <h2>DONE</h2>
+            <h2>DONE(<span id="done-count">0</span>)</h2>
             <div class="tasks" id="done-tasks"></div>
             <input type="text" class="task-input" placeholder="add task" id ="done-input" >
             <button 

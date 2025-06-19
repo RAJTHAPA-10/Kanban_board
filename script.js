@@ -9,15 +9,17 @@ function addtask(columnid)
     {
         return;
     }
-    inputcard=getcosmadecard(inputvalue);
+    const taskDate=new Date().toLocaleString();
+    inputcard=getcosmadecard(inputvalue,taskDate);
     document.getElementById(`${columnid}-tasks`).appendChild(inputcard);
     input.value="";
+    updateTaskCount(columnid);
 }
 
-function getcosmadecard(inputvalue)
+function getcosmadecard(inputvalue,taskDate)
 {
     const inputcard=document.createElement("div");
-    inputcard.innerText=inputvalue;
+    inputcard.innerHTML=`<span>${inputvalue}</span><br><small class="time" >${taskDate}</small>`;
     inputcard.classList.add("card");
     inputcard.draggable=true;
     inputcard.addEventListener("dragstart",funstart);
@@ -40,6 +42,11 @@ function funstart()
 function funend()
 {
     this.classList.remove("dragable");
+    ["todo","doing","done"].forEach((columnid)=>
+    {
+        updateTaskCount(columnid);
+    })
+
 }
 
 const columns=document.querySelectorAll(".column .tasks");
@@ -84,6 +91,16 @@ function deletetask()
 {
     if(rightclickedcard!==null)
     {
+        const columnid = rightclickedcard.parentElement.id().replace("-tasks","");
         rightclickedcard.remove();
+        updateTaskCount(columnid);
     }
+
+}
+
+function updateTaskCount(columnId)
+{
+    const count=document.querySelectorAll(`#${columnId}-tasks .card`).length;
+    
+    document.getElementById(`${columnId}-count`).textContent=count;
 }
